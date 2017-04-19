@@ -1,15 +1,9 @@
 import React from 'react';
-import Form from './Form';
-import PageControls from './PageControls';
+import FormPage from './FormPage';
 
 class PersonalDetailsPage extends React.Component {
     constructor(props) {
         super(props);
-
-        this.handleFormChange = this.handleFormChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-
-        this.state = props.initialState;
 
         this.fields = [
             {
@@ -40,25 +34,12 @@ class PersonalDetailsPage extends React.Component {
         ]
     }
 
-    handleFormChange(nextInputState) {
-        console.log('page', nextInputState);
-        this.setState(nextInputState);
-    }
-
-    handleSubmit() {
-        this.props.submitFormState(this.state);
-    }
-
     render() {
         return (
-            <div>
-                <section>
-                    <h1>Tof dat je wilt helpen, {this.props.name}!</h1>
-                    <p>Voor onze eigen administratie hebben wij nog een aantal details nodig. Zoals hoe wij contact met je op kunnen nemen etc.</p>
-                </section>
-                <PageControls nextAction={this.handleSubmit} />
-                <Form handleFormChange={this.handleFormChange} fields={this.fields} formState={this.state} />
-            </div>
+            <FormPage {...this.props} fields={this.fields}>
+                <h1>Tof dat je wilt helpen, {name}!</h1>
+                <p>Voor onze eigen administratie hebben wij nog een aantal details nodig. Zoals hoe wij contact met je op kunnen nemen etc.</p>
+            </FormPage>
         );
     }
 }

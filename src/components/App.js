@@ -11,8 +11,13 @@ class App extends Component {
     super(props);
 
     this.submitFormState = this.submitFormState.bind(this);
+    this.setPage = this.setPage.bind(this);
+    this.nextPage = this.nextPage.bind(this);
+    this.previousPage = this.previousPage.bind(this);
 
     this.state = {
+      currentPage: 1,
+      totalPages: 5,
       values: {
           name: '',
           email: '',
@@ -37,20 +42,56 @@ class App extends Component {
     this.setState({values})
   }
 
+  nextPage() {
+    const { currentPage, totalPages } = this.state;
+    const nextPage = currentPage + 1;
+    if (nextPage < totalPages) {
+      this.setPage(nextPage);
+    }
+  }
+
+  previousPage() {
+    const currentPage = this.state.currentPage;
+    const nextPage = currentPage - 1;
+    if (nextPage >= 0) {
+      this.setPage(nextPage);
+    }
+  }
+
+  setPage(currentPage) {
+    this.setState({currentPage});
+  }
+
   render() {
     const {name, email, surnamePrefix, surname, phonenumber, wantsCalls, hasFirstAidCertificate, isBHVCertified, hasTapLicense, canTapBeer} = this.state.values;
+
+    var page = <div></div>;
+    switch (this.state.currentPage) {
+        case 1:
+          page = <PersonalDetailsPage
+              submitFormState={this.submitFormState}
+              name={name}
+              nextPage={this.nextPage}
+              previousPage={this.previousPage}
+              formState={{surnamePrefix, surname, phonenumber, wantsCalls}} />;
+          break;
+        case 2:
+          page = <ExperienceDetailsPage
+              submitFormState={this.submitFormState}
+              nextPage={this.nextPage}
+              previousPage={this.previousPage}
+              formState={{hasFirstAidCertificate, isBHVCertified, hasTapLicense, canTapBeer}}/>;
+            break;
+        default:
+          page = <GettingStartedPage
+              submitFormState={this.submitFormState}
+              nextPage={this.nextPage}
+              initialState={{name, email}} />;
+    }
+
     return (
       <div className={styles.app}>
-        <GettingStartedPage
-            submitFormState={this.submitFormState}
-            initialState={{name, email}} />
-        <PersonalDetailsPage
-            submitFormState={this.submitFormState}
-            name={name}
-            initialState={{surnamePrefix, surname, phonenumber, wantsCalls}} />
-        <ExperienceDetailsPage
-            submitFormState={this.submitFormState}
-            initialState={{hasFirstAidCertificate, isBHVCertified, hasTapLicense, canTapBeer}}/>
+          {page}
       </div>
     );
   }

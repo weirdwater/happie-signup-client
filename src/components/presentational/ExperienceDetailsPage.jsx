@@ -1,15 +1,9 @@
 import React from 'react';
-import Form from './Form';
-import PageControls from "./PageControls";
+import FormPage from "./FormPage";
 
 class ExperienceDetailsPage extends React.Component {
     constructor(props) {
         super(props);
-
-        this.handleFormChange = this.handleFormChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-
-        this.state = props.initialState
 
         this.fields = [
             {
@@ -40,25 +34,12 @@ class ExperienceDetailsPage extends React.Component {
         ]
     }
 
-    handleFormChange(nextInputState) {
-        console.log('page', nextInputState);
-        this.setState(nextInputState);
-    }
-
-    handleSubmit() {
-        this.props.submitFormState(this.state);
-    }
-
     render() {
         return (
-            <div>
-                <section>
-                    <h1>Horeca ervaring</h1>
-                    <p>Graag horen wij ook wat jou ervaring is binnen de horeca.</p>
-                </section>
-                <PageControls nextAction={this.handleSubmit}/>
-                <Form handleFormChange={this.handleFormChange} fields={this.fields} formState={this.state}/>
-            </div>
+            <FormPage {...this.props} fields={this.fields}>
+                <h1>Horeca ervaring</h1>
+                <p>Graag horen wij ook wat jou ervaring is binnen de horeca.</p>
+            </FormPage>
         );
     }
 }

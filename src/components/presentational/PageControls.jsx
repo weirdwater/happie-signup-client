@@ -2,11 +2,12 @@ import React from 'react'
 
 class PageControls extends React.Component {
     render() {
+        const {nextPage, previousPage, ...props} = this.props;
         return (
             <div>
-                <button type="button">Vorige</button>
+                <button onClick={previousPage} type="button">Vorige</button>
                 <span>0/5</span>
-                <button onClick={this.props.nextAction} type="button">Volgende</button>
+                <button onClick={nextPage} type="button">Volgende</button>
             </div>
         );
     }
