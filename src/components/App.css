@@ -3,6 +3,7 @@
   background: linear-gradient(10deg, rgba(7, 7, 109, .88), rgba(55, 10, 4, .99) ), url('../wiphala-clear.png');
   color: #fff;
   padding: 0;
+  transition: .2s;
 }
 
 
