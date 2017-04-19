@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Form.css';
 
 class Form extends React.Component {
 
@@ -42,8 +43,11 @@ class Form extends React.Component {
 
     render() {
         const {fields, className} = this.props;
+
+        const containerClass = [className, styles.container].join(' ');
+
         return(
-            <form className={className} >
+            <form className={containerClass} >
                 { fields.map(this.renderInput) }
             </form>
         );
