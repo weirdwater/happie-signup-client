@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from './Form';
+import PageControls from "./PageControls";
 
 class ExperienceDetailsPage extends React.Component {
     constructor(props) {
@@ -56,6 +57,7 @@ class ExperienceDetailsPage extends React.Component {
                     <h1>Horeca ervaring</h1>
                     <p>Graag horen wij ook wat jou ervaring is binnen de horeca.</p>
                 </section>
+                <PageControls/>
                 <Form handleFormChange={this.handleFormChange} fields={this.fields} formState={this.state}/>
             </div>
         );
