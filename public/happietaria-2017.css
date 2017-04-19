@@ -1,0 +1,423 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    color: #000; }
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Fjalla One", sans-serif; }
+
+h1 {
+    size: 1.9em;
+    text-transform: uppercase; }
+
+h2 {
+    size: 1.6em; }
+
+h3 {
+    size: 1.3em; }
+
+h4 {
+    size: 1em; }
+
+* {
+    box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5; }
+
+.wrapper, .sticky-header__wrapper, .news-bar__wrapper, .page-header-content, .page-content__wrapper, .content-section__wrapper, .footer__wrapper {
+    max-width: 1164px;
+    margin: 0 auto;
+    padding-left: 30px;
+    padding-right: 30px; }
+
+.grid-wrapper {
+    max-width: 1164px;
+    margin: 0 auto; }
+.grid-wrapper::after {
+    clear: both;
+    content: "";
+    display: block; }
+
+a.button, .tease-post a.read-more {
+    text-decoration: none; }
+
+button,
+.button,
+.tease-post .read-more {
+    background-color: #d00;
+    font-family: "Fjalla One", sans-serif;
+    color: #fff;
+    border: none;
+    padding: .6em 2.4em;
+    display: inline-block;
+    text-transform: uppercase;
+    text-align: center;
+    transition: .3s; }
+button:hover,
+.button:hover,
+.tease-post .read-more:hover {
+    background-color: #f00; }
+button--light,
+.button--light,
+.content-section--dark .button,
+.content-section--dark .tease-post .read-more,
+.tease-post .content-section--dark .read-more {
+    background-color: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.13); }
+button--light:hover,
+.button--light:hover,
+.content-section--dark .button:hover,
+.content-section--dark .tease-post .read-more:hover,
+.tease-post .content-section--dark .read-more:hover {
+    background-color: rgba(255, 255, 255, 0.55); }
+
+.button--clear, .sticky-header__open-menu {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0; }
+.button--clear:hover, .sticky-header__open-menu:hover {
+    background: none; }
+
+.sticky-header {
+    font-family: "Fjalla One", sans-serif;
+    width: 100%;
+    background-color: #fff;
+    transition: .5s; }
+.sticky-header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 4em; }
+.sticky-header__nav-link, .sticky-header__nav ul li, .sticky-header__open-menu {
+    margin-top: 5px;
+    margin-left: 1em;
+    font-size: 1em;
+    font-family: "Fjalla One", sans-serif;
+    color: #000;
+    text-transform: uppercase;
+    border-bottom: 5px solid #fff; }
+.sticky-header__nav-link:hover, .sticky-header__nav ul li:hover, .sticky-header__open-menu:hover {
+    border-bottom-color: #d00; }
+.sticky-header h1 {
+    margin: 0; }
+.sticky-header__nav ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end; }
+.sticky-header__nav ul li {
+    list-style: none;
+    position: relative; }
+.sticky-header__nav ul li.current-menu-item {
+    border-bottom-color: #d00; }
+.sticky-header__nav ul li a {
+    color: #000;
+    text-decoration: none; }
+.sticky-header__nav ul li:hover ul {
+    display: block; }
+.sticky-header__nav ul li ul {
+    display: none;
+    margin: 0;
+    padding: 1em 1em 1em 0;
+    position: absolute;
+    top: calc(100% + 5px);
+    background-color: #d00; }
+.sticky-header__nav ul li ul li,
+.sticky-header__nav ul li ul li:hover {
+    border: none; }
+.sticky-header__nav ul li ul a {
+    color: white; }
+.sticky-header__nav ul li ul a:hover {
+    text-decoration: underline; }
+.sticky-header__open-menu {
+    text-decoration: none;
+    cursor: pointer; }
+
+header[data-fixed="true"] .news-bar {
+    margin-bottom: 5em; }
+header[data-fixed="true"] .sticky-header {
+    position: fixed;
+    top: 0;
+    box-shadow: 0 10px 20px -15px #000; }
+
+@media screen and (max-width: 730px) {
+    .sticky-header__nav {
+        display: none; } }
+@media screen and (min-width: 730px) {
+    .sticky-header__open-menu {
+        display: none; } }
+.sticky-header[data-open="true"] {
+    position: fixed;
+    top: 0;
+    height: 100%; }
+.sticky-header[data-open="true"] .sticky-header__wrapper {
+    flex-wrap: wrap;
+    align-content: space-between;
+    padding-top: .425em; }
+.sticky-header[data-open="true"] .sticky-header__open-menu {
+    margin-left: auto;
+    display: block; }
+.sticky-header[data-open="true"] .sticky-header__nav {
+    margin-top: 3em;
+    display: block;
+    order: 2;
+    flex-basis: 100%; }
+.sticky-header[data-open="true"] .sticky-header__nav ul {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto; }
+.sticky-header[data-open="true"] .sticky-header__nav ul li {
+    text-align: center; }
+.sticky-header[data-open="true"] .sticky-header__nav ul li ul {
+    display: block;
+    position: static;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    background-color: #f5f5f5; }
+.sticky-header[data-open="true"] .sticky-header__nav ul li ul a {
+    color: #000; }
+.sticky-header[data-open="true"] .sticky-header__nav ul li:hover ul {
+    background-color: #d00; }
+.sticky-header[data-open="true"] .sticky-header__nav ul li:hover ul a {
+    color: #fff; }
+.sticky-header[data-open="true"] .sticky-header__nav ul li.menu-item-has-children {
+    border: none; }
+
+.header-logo {
+    display: flex;
+    align-items: center; }
+.header-logo__name, .header-logo__description {
+    display: block; }
+.header-logo__link {
+    color: #000;
+    text-decoration: none;
+    display: block; }
+.header-logo__image {
+    height: 3.15em;
+    margin-right: .3em; }
+.header-logo__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+.header-logo__name {
+    font-family: "Fjalla One", sans-serif; }
+.header-logo__description {
+    font-family: "Open Sans", sans-serif;
+    font-size: .65em; }
+
+.news-bar {
+    background: #d00;
+    color: #fff;
+    padding: .5em 0;
+    font-size: .8em; }
+.news-bar__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+.news-bar__heading, .news-bar__article, .news-bar__all-news {
+    font-weight: 400;
+    font-size: 1em;
+    font-family: "Fjalla One", sans-serif;
+    display: inline-block;
+    margin: 0; }
+.news-bar a {
+    color: #fff;
+    text-decoration: none; }
+.news-bar a:hover, .news-bar a:active {
+    text-decoration: underline; }
+
+.pre-header {
+    height: 70vh;
+    height: calc(100vh - 5.9em);
+    background-size: cover;
+    position: relative;
+    overflow: hidden; }
+.pre-header__title {
+    color: #fff;
+    font-size: 8vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(-50% - 59px));
+    text-shadow: 0 0 30px rgba(0, 0, 0, 0.6); }
+
+.page-header {
+    background-color: #f5f5f5;
+    background-position: center;
+    background-size: cover;
+    padding: 1.75em 0; }
+.page-header-content {
+    background-color: #fff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex; }
+.page-header-content__text-area {
+    flex: 7 0 0;
+    padding: 1em 30px;
+    padding-right: 0;
+    text-align: center; }
+.page-header-content__text-area p {
+    font-size: .8em;
+    margin: 2em 0;
+    text-align: left; }
+.page-header-content__image {
+    flex: 5 0 0; }
+.page-header-content__image img {
+    max-width: 100%; }
+@media screen and (max-width: 650px) {
+    .page-header-content {
+        flex-direction: column; }
+    .page-header-content__image {
+        flex-grow: 1; }
+    .page-header-content__text-area {
+        flex-grow: 1;
+        padding-left: 0; } }
+.page-header--empty {
+    height: 350px; }
+
+.page-content {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-color: #fff;
+    font-size: 16px; }
+.page-content h1 {
+    font-size: 2.375em; }
+.page-content h2 {
+    font-size: 1.75em; }
+.page-content h3 {
+    font-size: 1.375em; }
+.page-content h4 {
+    font-size: 1.125em; }
+
+.content-section {
+    background-position: center;
+    background-size: cover; }
+.content-section__wrapper {
+    display: flex;
+    align-items: stretch;
+    align-content: stretch; }
+.content-section__image {
+    flex-grow: 1;
+    flex-basis: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; }
+.content-section__image--left {
+    padding-left: 30px;
+    margin-left: -30px; }
+.content-section__image--right {
+    padding-right: 30px;
+    margin-right: -30px; }
+.content-section__body {
+    flex-grow: 1;
+    flex-basis: 0;
+    margin-top: 6em;
+    margin-bottom: 6em;
+    padding-left: 30px; }
+.content-section__body h1 {
+    margin-top: 0; }
+.content-section__body > p {
+    margin-bottom: 4em; }
+.content-section__body--left {
+    order: -1;
+    padding-left: 0;
+    padding-right: 30px; }
+.content-section--dark {
+    color: #fff;
+    background: linear-gradient(10deg, rgba(7, 7, 109, 0.88), rgba(55, 10, 4, 0.99)), url("http://localhost/wp-content/themes/happietaria-2017/static/wiphala-clear.png"); }
+.content-section--dark .content-section__image {
+    background-size: contain; }
+.content-section article {
+    margin-bottom: 4em; }
+.content-section article:last-of-type {
+    margin-bottom: 0; }
+
+@media screen and (max-width: 680px) {
+    .content-section__wrapper {
+        flex-direction: column; }
+    .content-section__image, .content-section__image--left, .content-section__image--right {
+        padding: 0;
+        margin: 0; }
+    .content-section__image {
+        order: 0;
+        flex-basis: 300px;
+        padding: 0 30px; }
+    .content-section__body {
+        order: 1;
+        margin-top: 2em;
+        padding-left: 0; }
+    .content-section__body--left {
+        order: 1;
+        padding: 0; }
+    .content-section--dark {
+        padding-top: 1em; } }
+.tease-post {
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    border-left: 10px solid #d00;
+    background-color: #f5f5f5; }
+.tease-post__heading, .tease-post__thumbnail, .tease-post__preview {
+    flex: 1 0 0;
+    padding: 0 20px; }
+.tease-post__heading a {
+    color: #000;
+    text-decoration: none; }
+.tease-post__thumbnail {
+    min-height: 200px;
+    background-size: cover;
+    background-position: center; }
+.tease-post__preview {
+    margin-top: 0; }
+.tease-post__container {
+    padding-top: 1em;
+    padding-bottom: 1em; }
+.tease-post .read-more {
+    display: block;
+    margin: 1em auto; }
+
+.footer {
+    font-size: 14px;
+    background-color: #f5f5f5; }
+.footer__wrapper {
+    padding-top: 1.5em;
+    padding-bottom: 5em; }
+.footer__widgets {
+    display: flex; }
+@media screen and (max-width: 600px) {
+    .footer__widgets {
+        flex-direction: column; } }
+.footer__widgets section {
+    flex: 1 0 0;
+    margin-right: 1em; }
+.footer__widgets section:last-of-type {
+    margin-right: 0; }
+.footer__copyright {
+    display: block;
+    margin-top: 2em; }
+.footer .header-logo {
+    font-size: 20px; }
+.footer__partner-img {
+    max-width: 10em; }
+
+.post-content {
+    background-color: #f5f5f5; }
+
+.article-content {
+    background-color: #fff;
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between; }
+.article-content .article-body {
+    flex: 1 0 100%; }
+
+/*# sourceMappingURL=happietaria-2017.css.map */
