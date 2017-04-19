@@ -1,5 +1,4 @@
 import React from 'react';
-import LabeledInput from './LabeledInput';
 
 class GettingStartedPage extends React.Component {
     constructor(props) {

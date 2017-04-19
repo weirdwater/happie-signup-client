@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import GettingStartedPage from './presentational/GettingStartedPage'
+import PersonalDetailsPage from "./presentational/PersonalDetailsPage";
+
 import styles from './App.css';
+import ExperienceDetailsPage from "./presentational/ExperienceDetailsPage";
 
 class App extends Component {
 
@@ -12,11 +15,13 @@ class App extends Component {
     this.state = {
       name: null,
       email: null,
+      surnamePrefix: null,
       surname: null,
-      hasFirstAidCertificate: null,
-      isBHVCertified: null,
-      canTapBeer: null,
-      wantsCalls: null,
+      hasFirstAidCertificate: false,
+      isBHVCertified: false,
+      canTapBeer: false,
+      hasTapLicense: false,
+      wantsCalls: false,
       pastExperience: null,
       phonenumber: null
     }
@@ -27,11 +32,18 @@ class App extends Component {
   }
 
   render() {
+    const {name, email, surnamePrefix, surname, phonenumber, wantsCalls, hasFirstAidCertificate, isBHVCertified, hasTapLicense, canTapBeer} = this.state;
     return (
       <div className={styles.app}>
         <GettingStartedPage
             submitFormState={this.submitFormState}
-            initialState={{name: this.state.name, email: this.state.email}} />
+            initialState={{name, email}} />
+        <PersonalDetailsPage
+            submitFormState={this.submitFormState}
+            initialState={{surnamePrefix, surname, phonenumber, wantsCalls}} />
+        <ExperienceDetailsPage
+            submitFormState={this.submitFormState}
+            initialState={{hasFirstAidCertificate, isBHVCertified, hasTapLicense, canTapBeer}}/>
       </div>
     );
   }
