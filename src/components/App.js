@@ -64,7 +64,19 @@ class App extends Component {
   }
 
   render() {
-    const {name, email, surnamePrefix, surname, phonenumber, wantsCalls, wantsEmail, hasFirstAidCertificate, isBHVCertified, hasTapLicense, canTapBeer} = this.state.values;
+    const {
+        name,
+        email,
+        surnamePrefix,
+        surname,
+        phonenumber,
+        wantsCalls,
+        wantsEmail,
+        hasFirstAidCertificate,
+        isBHVCertified,
+        hasTapLicense,
+        canTapBeer} = this.state.values;
+    const { currentPage, totalPages } = this.state;
 
     var page = <div></div>;
     switch (this.state.currentPage) {
@@ -74,6 +86,8 @@ class App extends Component {
               name={name}
               nextPage={this.nextPage}
               previousPage={this.previousPage}
+              currentPage={currentPage}
+              totalPages={totalPages}
               formState={{surnamePrefix, surname, phonenumber, wantsCalls}} />;
           break;
         case 2:
@@ -81,6 +95,8 @@ class App extends Component {
               submitFormState={this.submitFormState}
               nextPage={this.nextPage}
               previousPage={this.previousPage}
+              currentPage={currentPage}
+              totalPages={totalPages}
               formState={{hasFirstAidCertificate, isBHVCertified, hasTapLicense, canTapBeer}}/>;
             break;
         default:

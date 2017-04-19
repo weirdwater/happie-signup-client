@@ -25,6 +25,7 @@ class GettingStartedPage extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.submitFormState(this.state);
+        this.props.nextPage();
     }
 
     render() {

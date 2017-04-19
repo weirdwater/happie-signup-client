@@ -14,6 +14,7 @@ class FormPage extends React.Component {
         this.fieldIsValid = this.fieldIsValid.bind(this);
         this.pageIsValid = this.pageIsValid.bind(this);
         this.componentWillMount = this.componentWillMount.bind(this);
+        this.nextPage = this.nextPage.bind(this);
 
         this.state = {
             validFields: {},
@@ -100,13 +101,22 @@ class FormPage extends React.Component {
         this.props.submitFormState(this.state.formState);
     }
 
+    nextPage() {
+        if (this.pageIsValid()) {
+            this.handleSubmit();
+            this.props.nextPage();
+        }
+    }
+
     render() {
+        const { fields, currentPage, totalPages, previousPage, ...props } = this.props;
+
         return (
             <div className={styles.container}>
                 <section className={styles.description}>
                     {this.props.children}
                 </section>
-                <PageControls className={styles.controls} />
+                <PageControls currentPage={currentPage} totalPages={totalPages} previousPage={previousPage} nextPage={this.nextPage} allowToContinue={this.pageIsValid()} className={styles.controls} />
                 <Form className={styles.form} handleFormChange={this.handleFormChange} fields={this.props.fields} formState={this.state.formState} />
             </div>
         )
