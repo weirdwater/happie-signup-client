@@ -13,26 +13,32 @@ class App extends Component {
     this.submitFormState = this.submitFormState.bind(this);
 
     this.state = {
-      name: '',
-      email: '',
-      surnamePrefix: '',
-      surname: '',
-      hasFirstAidCertificate: false,
-      isBHVCertified: false,
-      canTapBeer: false,
-      hasTapLicense: false,
-      wantsCalls: false,
-      pastExperience: '',
-      phonenumber: ''
+      values: {
+          name: '',
+          email: '',
+          surnamePrefix: '',
+          surname: '',
+          hasFirstAidCertificate: false,
+          isBHVCertified: false,
+          canTapBeer: false,
+          hasTapLicense: false,
+          wantsCalls: false,
+          pastExperience: '',
+          phonenumber: ''
+      }
     }
   }
 
   submitFormState(formState) {
-    this.setState({...formState})
+    const previousValues = {...this.state.values}
+
+    const values = Object.assign({}, previousValues, formState);
+
+    this.setState({values})
   }
 
   render() {
-    const {name, email, surnamePrefix, surname, phonenumber, wantsCalls, hasFirstAidCertificate, isBHVCertified, hasTapLicense, canTapBeer} = this.state;
+    const {name, email, surnamePrefix, surname, phonenumber, wantsCalls, hasFirstAidCertificate, isBHVCertified, hasTapLicense, canTapBeer} = this.state.values;
     return (
       <div className={styles.app}>
         <GettingStartedPage
