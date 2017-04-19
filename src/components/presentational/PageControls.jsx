@@ -9,9 +9,9 @@ class PageControls extends React.Component {
 
         return (
             <div className={containerClass}>
-                <button onClick={previousPage} type="button">Vorige</button>
-                <span>0/5</span>
-                <button onClick={nextPage} type="button">Volgende</button>
+                <button className={styles.previous} onClick={previousPage} type="button">Vorige</button>
+                <span className={styles.progress}>0/5</span>
+                <button className={styles.next} onClick={nextPage} type="button">Volgende</button>
             </div>
         );
     }

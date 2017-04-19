@@ -1,3 +1,41 @@
 .container {
-    padding: 1em;
+    padding: 3em 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container > * {
+    box-sizing: border-box;
+    flex: 1 0 0;
+}
+
+.next,
+.previous {
+    font-size: 1em;
+    padding-bottom: .4em;
+    width: auto;
+}
+
+.next {
+    background-color: rgba(255, 0, 0, .55);
+    border: 1px solid rgba(255, 0, 0, .13);
+}
+
+.next:hover {
+    background-color: rgba(255, 0, 0, .80);
+}
+
+.previous {
+    background-color: rgba(255, 255, 255, .25);
+    border: 1px solid rgba(255, 255, 255, .13);
+}
+
+.previous:hover {
+    background-color: rgba(255, 255, 255, .55);
+}
+
+.progress {
+    font-family: "Fjalla One", sans-serif;
+    text-align: center;
 }

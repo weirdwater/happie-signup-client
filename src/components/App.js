@@ -16,7 +16,7 @@ class App extends Component {
     this.previousPage = this.previousPage.bind(this);
 
     this.state = {
-      currentPage: 0,
+      currentPage: 1,
       totalPages: 5,
       values: {
           name: '',
