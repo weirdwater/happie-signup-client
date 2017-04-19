@@ -1,8 +1,10 @@
 .app {
-  background: #fff;
   font-size: 16px;
-  padding: 2em 0;
+  background: linear-gradient(10deg, rgba(7, 7, 109, .88), rgba(55, 10, 4, .99) ), url('../wiphala-clear.png');
+  color: #fff;
+  padding: 0;
 }
+
 
 .app input, .app textarea {
   box-sizing: border-box;

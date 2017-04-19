@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './GettingStartedPage.css';
 
 class GettingStartedPage extends React.Component {
     constructor(props) {
@@ -27,34 +28,38 @@ class GettingStartedPage extends React.Component {
     }
 
     render() {
+        const submitDisabled = (this.state.name === '' || this.state.email === '');
         return (
-          <form onSubmit={this.handleSubmit}>
-              <label>
-                  Naam
-                  <input
-                      type="text"
-                      value={this.state.name}
-                      onChange={this.handleInputChange}
-                      name="name"/>
-              </label>
-              <label>
-                  E-mail adres
-                  <input
-                      type="email"
-                      value={this.state.email}
-                      onChange={this.handleInputChange}
-                      name="email"/>
-              </label>
-              <label>
-                  <input
-                      type="checkbox"
-                      checked={this.state.wantsEmail}
-                      onChange={this.handleInputChange}
-                      name="wantsEmail"/>
-                  Abbonneer op de nieuwsbrief
-              </label>
-              <input type="submit" value="Volgende"/>
-          </form>
+            <div className={styles.container}>
+                <form className={styles.form} onSubmit={this.handleSubmit}>
+                    <h1>Meld je nu aan als vrijwilliger</h1>
+                    <label>
+                        Naam
+                        <input
+                            type="text"
+                            value={this.state.name}
+                            onChange={this.handleInputChange}
+                            name="name"/>
+                    </label>
+                    <label>
+                        E-mailadres
+                        <input
+                            type="email"
+                            value={this.state.email}
+                            onChange={this.handleInputChange}
+                            name="email"/>
+                    </label>
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={this.state.wantsEmail}
+                            onChange={this.handleInputChange}
+                            name="wantsEmail"/>
+                        Abbonneer op de nieuwsbrief
+                    </label>
+                    <input className="button" type="submit" value="Volgende" disabled={submitDisabled}/>
+                </form>
+            </div>
         );
     }
 }
