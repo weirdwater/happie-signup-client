@@ -10,20 +10,17 @@ class PersonalDetailsPage extends React.Component {
                 name: 'surnamePrefix',
                 type: 'text',
                 label: 'Tussenvoegsel',
-                placeholder: 'van den'
             },
             {
                 name: 'surname',
                 type: 'text',
                 label: 'Achternaam',
-                placeholder: 'Klaas',
                 required: true
             },
             {
                 name: 'phonenumber',
                 type: 'text',
                 label: 'Telefoonnummer',
-                placeholder: '0612345678',
                 required: true
             },
             {

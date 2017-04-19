@@ -16,7 +16,7 @@ class App extends Component {
     this.previousPage = this.previousPage.bind(this);
 
     this.state = {
-      currentPage: 1,
+      currentPage: 0,
       totalPages: 5,
       values: {
           name: '',
@@ -28,6 +28,7 @@ class App extends Component {
           canTapBeer: false,
           hasTapLicense: false,
           wantsCalls: false,
+          wantsEmail: false,
           pastExperience: '',
           phonenumber: ''
       }
@@ -63,7 +64,7 @@ class App extends Component {
   }
 
   render() {
-    const {name, email, surnamePrefix, surname, phonenumber, wantsCalls, hasFirstAidCertificate, isBHVCertified, hasTapLicense, canTapBeer} = this.state.values;
+    const {name, email, surnamePrefix, surname, phonenumber, wantsCalls, wantsEmail, hasFirstAidCertificate, isBHVCertified, hasTapLicense, canTapBeer} = this.state.values;
 
     var page = <div></div>;
     switch (this.state.currentPage) {
@@ -86,7 +87,7 @@ class App extends Component {
           page = <GettingStartedPage
               submitFormState={this.submitFormState}
               nextPage={this.nextPage}
-              initialState={{name, email}} />;
+              initialState={{name, email, wantsEmail}} />;
     }
 
     return (

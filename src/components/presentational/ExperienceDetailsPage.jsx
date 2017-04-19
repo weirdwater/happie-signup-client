@@ -9,7 +9,7 @@ class ExperienceDetailsPage extends React.Component {
             {
                 name: 'hasFirstAidCertificate',
                 type: 'checkbox',
-                label: 'Ik heb een EHBO diploma.',
+                label: 'Ik beschik over een EHBO diploma.',
             },
             {
                 name: 'isBHVCertified',

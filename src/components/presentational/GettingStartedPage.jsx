@@ -12,7 +12,7 @@ class GettingStartedPage extends React.Component {
 
     handleInputChange(event) {
         const input = event.target;
-        const value = input.value;
+        const value = input.type === 'checkbox' ? input.checked : input.value ;
         const name = input.name;
         console.log({name, value})
 
@@ -30,7 +30,7 @@ class GettingStartedPage extends React.Component {
         return (
           <form onSubmit={this.handleSubmit}>
               <label>
-                  Name
+                  Naam
                   <input
                       type="text"
                       value={this.state.name}
@@ -44,6 +44,14 @@ class GettingStartedPage extends React.Component {
                       value={this.state.email}
                       onChange={this.handleInputChange}
                       name="email"/>
+              </label>
+              <label>
+                  <input
+                      type="checkbox"
+                      checked={this.state.wantsEmail}
+                      onChange={this.handleInputChange}
+                      name="wantsEmail"/>
+                  Abbonneer op de nieuwsbrief
               </label>
               <input type="submit" value="Volgende"/>
           </form>
