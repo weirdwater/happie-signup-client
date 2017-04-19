@@ -41,9 +41,9 @@ class Form extends React.Component {
     }
 
     render() {
-        const {fields} = this.props;
+        const {fields, className} = this.props;
         return(
-            <form>
+            <form className={className} >
                 { fields.map(this.renderInput) }
             </form>
         );

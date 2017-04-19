@@ -37,7 +37,7 @@ class PersonalDetailsPage extends React.Component {
     render() {
         return (
             <FormPage {...this.props} fields={this.fields}>
-                <h1>Tof dat je wilt helpen, {name}!</h1>
+                <h1>Tof dat je wilt helpen, {this.props.name}!</h1>
                 <p>Voor onze eigen administratie hebben wij nog een aantal details nodig. Zoals hoe wij contact met je op kunnen nemen etc.</p>
             </FormPage>
         );

@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './FormPage.css';
 import PageControls from './PageControls';
 import Form from './Form';
 
@@ -101,12 +102,12 @@ class FormPage extends React.Component {
 
     render() {
         return (
-            <div>
-                <section>
-                    props.children
+            <div className={styles.container}>
+                <section className={styles.description}>
+                    {this.props.children}
                 </section>
-                <PageControls />
-                <Form handleFormChange={this.handleFormChange} fields={this.props.fields} formState={this.state.formState} />
+                <PageControls className={styles.controls} />
+                <Form className={styles.form} handleFormChange={this.handleFormChange} fields={this.props.fields} formState={this.state.formState} />
             </div>
         )
     }
