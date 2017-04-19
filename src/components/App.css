@@ -2,7 +2,7 @@
   background: #fff;
 }
 
-.app input {
+.app input, .app textarea {
   display: block;
   font-size: 1em;
 }

@@ -20,11 +20,16 @@ class Form extends React.Component {
     }
 
     renderInput({label, ...props}) {
-        const input = (<input
-            type="text"
-            onChange={this.handleInputChange}
-            value={this.props.formState[props.name]}
-            {...props} />);
+
+        const inputArgs = {
+            onChange: this.handleInputChange,
+            value: this.props.formState[props.name],
+            ...props
+        };
+
+        const input = props.type === 'textarea'
+            ? (<textarea {...inputArgs}></textarea>)
+            : <input {...inputArgs} />;
 
         return (
             <label key={props.name}>
