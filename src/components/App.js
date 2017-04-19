@@ -13,17 +13,17 @@ class App extends Component {
     this.submitFormState = this.submitFormState.bind(this);
 
     this.state = {
-      name: null,
-      email: null,
-      surnamePrefix: null,
-      surname: null,
+      name: '',
+      email: '',
+      surnamePrefix: '',
+      surname: '',
       hasFirstAidCertificate: false,
       isBHVCertified: false,
       canTapBeer: false,
       hasTapLicense: false,
       wantsCalls: false,
-      pastExperience: null,
-      phonenumber: null
+      pastExperience: '',
+      phonenumber: ''
     }
   }
 
@@ -40,6 +40,7 @@ class App extends Component {
             initialState={{name, email}} />
         <PersonalDetailsPage
             submitFormState={this.submitFormState}
+            name={name}
             initialState={{surnamePrefix, surname, phonenumber, wantsCalls}} />
         <ExperienceDetailsPage
             submitFormState={this.submitFormState}

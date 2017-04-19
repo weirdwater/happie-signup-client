@@ -1,3 +1,16 @@
 .app {
   background: #fff;
 }
+
+.app input {
+  display: block;
+  font-size: 1em;
+}
+
+.app input[type="checkbox"] {
+  display: inline;
+}
+
+.app label {
+  display: block;
+}

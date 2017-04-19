@@ -1,24 +1,47 @@
 import React from 'react';
+import Form from "./Form";
 
 class PersonalDetailsPage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleFormChange = this.handleFormChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        this.state = props.initialState
+        this.state = props.initialState;
+
+        this.fields = [
+            {
+                name: 'surnamePrefix',
+                type: 'text',
+                label: 'Tussenvoegsel',
+                placeholder: 'van den'
+            },
+            {
+                name: 'surname',
+                type: 'text',
+                label: 'Achternaam',
+                placeholder: 'Klaas',
+                required: true
+            },
+            {
+                name: 'phonenumber',
+                type: 'text',
+                label: 'Telefoonnummer',
+                placeholder: '0612345678',
+                required: true
+            },
+            {
+                name: 'wantsCalls',
+                type: 'checkbox',
+                label: 'Ik mag gebeld worden als invalkracht',
+            }
+        ]
     }
 
-    handleInputChange(event) {
-        const input = event.target;
-        const value = input.type === 'checkbox' ? input.checked : input.value;
-        const name = input.name;
-        console.log({name, value});
-
-        this.setState({
-            [name]: value
-        })
+    handleFormChange(nextInputState) {
+        console.log('page', nextInputState);
+        this.setState(nextInputState);
     }
 
     handleSubmit(event) {
@@ -28,41 +51,18 @@ class PersonalDetailsPage extends React.Component {
 
     render() {
         return (
-          <form onSubmit={this.handleSubmit}>
-              <label>
-                  Tussenvoegsel
-                  <input
-                      type="text"
-                      value={this.state.surnamePrefix}
-                      onChange={this.handleInputChange}
-                      name="surnamePrefix"/>
-              </label>
-              <label>
-                  Achternaam
-                  <input
-                      type="text"
-                      value={this.state.surname}
-                      onChange={this.handleInputChange}
-                      name="surname"/>
-              </label>
-              <label>
-                  Telefoonnummer
-                  <input
-                      type="text"
-                      value={this.state.phonenumber}
-                      onChange={this.handleInputChange}
-                      name="phonenumber"/>
-              </label>
-              <label>
-                  <input
-                      type="checkbox"
-                      checked={this.state.wantsCalls}
-                      onChange={this.handleInputChange}
-                      name="wantsCalls"/>
-                  Ik mag gebeld worden als invalkracht.
-              </label>
-              <input type="submit" value="Volgende"/>
-          </form>
+            <div>
+                <section>
+                    <h1>Tof dat je wilt helpen, {this.props.name}!</h1>
+                    <p>Voor onze eigen administratie hebben wij nog een aantal details nodig. Zoals hoe wij contact met je op kunnen nemen etc.</p>
+                </section>
+                <div>
+                    <button type="button">Vorige</button>
+                    <span>2/5</span>
+                    <button type="button" onClick={this.handleSubmit}>Volgende</button>
+                </div>
+                <Form handleFormChange={this.handleFormChange} fields={this.fields} formState={this.state} />
+            </div>
         );
     }
 }
