@@ -8,14 +8,17 @@ class GettingStartedPage extends React.Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        this.state = props.initialState
+        this.state = {
+            email: '',
+            name: '',
+            wantsEmail: false
+        };
     }
 
     handleInputChange(event) {
         const input = event.target;
         const value = input.type === 'checkbox' ? input.checked : input.value ;
         const name = input.name;
-        console.log({name, value})
 
         this.setState({
             [name]: value
@@ -24,8 +27,8 @@ class GettingStartedPage extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.submitFormState(this.state);
-        this.props.nextPage();
+        const {name, email, wantsEmail} = this.state;
+        this.props.newParticipant(name, email, wantsEmail);
     }
 
     render() {

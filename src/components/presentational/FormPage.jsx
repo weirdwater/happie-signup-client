@@ -15,6 +15,9 @@ class FormPage extends React.Component {
         this.pageIsValid = this.pageIsValid.bind(this);
         this.componentWillMount = this.componentWillMount.bind(this);
         this.nextPage = this.nextPage.bind(this);
+        this.previousPage = this.previousPage.bind(this);
+
+        const emptyValues = this.props.fields.reduce((fieldNames, field) => Object.assign({}, fieldNames, {[field.name]: ''}), {});
 
         this.state = {
             validFields: {},
@@ -32,7 +35,6 @@ class FormPage extends React.Component {
             validFields[name] = isValid;
             return field;
         });
-        console.log(this.state);
         this.setState(validFields);
     }
 
@@ -56,7 +58,6 @@ class FormPage extends React.Component {
      */
     fieldIsValid(field, value) {
         // Field is required but value is empty
-        console.log(field.name, value, field.required, value === null || value === undefined || value === '');
         if (field.required && (value === null || value === undefined || value === '')) {
             return false
         }
@@ -76,8 +77,6 @@ class FormPage extends React.Component {
     }
 
     handleFormChange(nextInputState) {
-        console.log('page', nextInputState);
-        console.log(this.state)
 
         // Validate input
         const name = Object.keys(nextInputState)[0];
@@ -108,6 +107,11 @@ class FormPage extends React.Component {
         }
     }
 
+    previousPage() {
+        this.handleSubmit();
+        this.props.previousPage();
+    }
+
     render() {
         const { fields, currentPage, totalPages, previousPage, ...props } = this.props;
 
@@ -116,7 +120,7 @@ class FormPage extends React.Component {
                 <section className={styles.description}>
                     {this.props.children}
                 </section>
-                <PageControls currentPage={currentPage} totalPages={totalPages} previousPage={previousPage} nextPage={this.nextPage} allowToContinue={this.pageIsValid()} className={styles.controls} />
+                <PageControls currentPage={currentPage} totalPages={totalPages} previousPage={this.previousPage} nextPage={this.nextPage} allowToContinue={this.pageIsValid()} className={styles.controls} />
                 <Form className={styles.form} handleFormChange={this.handleFormChange} fields={this.props.fields} formState={this.state.formState} />
             </div>
         )

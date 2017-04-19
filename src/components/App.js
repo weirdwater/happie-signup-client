@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import base from '../base';
 import GettingStartedPage from './presentational/GettingStartedPage'
 import PersonalDetailsPage from "./presentational/PersonalDetailsPage";
 
 import styles from './App.css';
 import ExperienceDetailsPage from "./presentational/ExperienceDetailsPage";
+import LastPage from "./presentational/LastPage";
 
 class App extends Component {
 
@@ -14,30 +16,46 @@ class App extends Component {
     this.setPage = this.setPage.bind(this);
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
+    this.newParticipant = this.newParticipant.bind(this);
+    this.endForm = this.endForm.bind(this);
 
     this.state = {
-      currentPage: 1,
-      totalPages: 5,
+      totalPages: 3,
       values: {
-          name: '',
-          email: '',
-          surnamePrefix: '',
-          surname: '',
-          hasFirstAidCertificate: false,
-          isBHVCertified: false,
-          canTapBeer: false,
-          hasTapLicense: false,
-          wantsCalls: false,
-          wantsEmail: false,
-          pastExperience: '',
-          phonenumber: ''
       }
     }
   }
 
-  submitFormState(formState) {
-    const previousValues = {...this.state.values}
+  componentWillUnmount() {
+      base.removeBinding(this.ref);
+      window.localStorage.setItem('participantId', this.state.participantId);
+      if (this.ref) {
+          base.removeBinding(this.ref);
+      }
+  }
 
+
+
+  newParticipant(name, email, wantsEmail) {
+    const id = `${Date.now()}-${name}`;
+    this.ref = base.syncState(`${id}/signup`, {
+        context: this,
+        state: 'values'
+    });
+    this.setState({
+        participantId: id,
+        currentPage: 0,
+        values: {
+            email,
+            name,
+            wantsEmail
+        }
+    });
+
+  }
+
+  submitFormState(formState) {
+    const previousValues = this.state.values;
     const values = Object.assign({}, previousValues, formState);
 
     this.setState({values})
@@ -49,6 +67,17 @@ class App extends Component {
     if (nextPage < totalPages) {
       this.setPage(nextPage);
     }
+  }
+
+  endForm() {
+      if (this.ref) {
+          base.removeBinding(this.ref);
+      }
+      this.setState({
+          totalPages: 3,
+          currentPage: 2,
+          values: {}
+      });
   }
 
   previousPage() {
@@ -64,23 +93,12 @@ class App extends Component {
   }
 
   render() {
-    const {
-        name,
-        email,
-        surnamePrefix,
-        surname,
-        phonenumber,
-        wantsCalls,
-        wantsEmail,
-        hasFirstAidCertificate,
-        isBHVCertified,
-        hasTapLicense,
-        canTapBeer} = this.state.values;
+    const {name, email, wantsEmail} = this.state.values;
     const { currentPage, totalPages } = this.state;
 
-    var page = <div></div>;
+    let page = <div></div>;
     switch (this.state.currentPage) {
-        case 1:
+        case 0:
           page = <PersonalDetailsPage
               submitFormState={this.submitFormState}
               name={name}
@@ -88,22 +106,26 @@ class App extends Component {
               previousPage={this.previousPage}
               currentPage={currentPage}
               totalPages={totalPages}
-              formState={{surnamePrefix, surname, phonenumber, wantsCalls}} />;
+              formState={this.state.values} />;
           break;
-        case 2:
+        case 1:
           page = <ExperienceDetailsPage
               submitFormState={this.submitFormState}
               nextPage={this.nextPage}
               previousPage={this.previousPage}
               currentPage={currentPage}
               totalPages={totalPages}
-              formState={{hasFirstAidCertificate, isBHVCertified, hasTapLicense, canTapBeer}}/>;
+              formState={this.state.values}/>;
+            break;
+        case 2:
+            page = <LastPage
+                endForm={this.endForm}
+            />;
             break;
         default:
           page = <GettingStartedPage
-              submitFormState={this.submitFormState}
-              nextPage={this.nextPage}
-              initialState={{name, email, wantsEmail}} />;
+              newParticipant={this.newParticipant}
+              nextPage={this.nextPage} />;
     }
 
     return (
