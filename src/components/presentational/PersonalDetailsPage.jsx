@@ -26,7 +26,7 @@ class PersonalDetailsPage extends React.Component {
             {
                 name: 'wantsCalls',
                 type: 'checkbox',
-                label: 'Ik mag gebeld worden als invalkracht',
+                label: 'Zet mij op de Bel-me-maar-lijst',
             }
         ]
     }
@@ -35,7 +35,7 @@ class PersonalDetailsPage extends React.Component {
         return (
             <FormPage {...this.props} fields={this.fields}>
                 <h1>Tof dat je wilt helpen, {this.props.name}!</h1>
-                <p>Voor onze eigen administratie hebben wij nog een aantal details nodig. Zoals hoe wij contact met je op kunnen nemen etc.</p>
+                <p><strong>Bel-me-maar-lijst</strong>: Indien nodig kunnen we je op het laatste moment bellen, met de vraag of je kunt helpen. Jij beslists altijd of je wel of niet komt.</p>
             </FormPage>
         );
     }

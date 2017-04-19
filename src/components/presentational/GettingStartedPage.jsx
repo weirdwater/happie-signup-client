@@ -38,7 +38,7 @@ class GettingStartedPage extends React.Component {
                 <form className={styles.form} onSubmit={this.handleSubmit}>
                     <h1>Meld je nu aan als vrijwilliger</h1>
                     <label>
-                        Naam
+                        Voornaam
                         <input
                             type="text"
                             value={this.state.name}

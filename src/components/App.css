@@ -6,6 +6,9 @@
   transition: .2s;
 }
 
+.app strong {
+  font-weight: 600;
+}
 
 .app input, .app textarea {
   box-sizing: border-box;
