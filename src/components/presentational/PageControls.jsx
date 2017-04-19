@@ -6,7 +6,7 @@ class PageControls extends React.Component {
             <div>
                 <button type="button">Vorige</button>
                 <span>0/5</span>
-                <button type="button">Volgende</button>
+                <button onClick={this.props.nextAction} type="button">Volgende</button>
             </div>
         );
     }

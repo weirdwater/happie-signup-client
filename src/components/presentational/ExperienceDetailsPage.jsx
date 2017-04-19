@@ -45,8 +45,7 @@ class ExperienceDetailsPage extends React.Component {
         this.setState(nextInputState);
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
+    handleSubmit() {
         this.props.submitFormState(this.state);
     }
 
@@ -57,7 +56,7 @@ class ExperienceDetailsPage extends React.Component {
                     <h1>Horeca ervaring</h1>
                     <p>Graag horen wij ook wat jou ervaring is binnen de horeca.</p>
                 </section>
-                <PageControls/>
+                <PageControls nextAction={this.handleSubmit}/>
                 <Form handleFormChange={this.handleFormChange} fields={this.fields} formState={this.state}/>
             </div>
         );
