@@ -1,17 +1,18 @@
 import React from 'react';
+import LabeledInput from './LabeledInput';
 
 class GettingStartedPage extends React.Component {
     render() {
         return (
           <div>
               <form>
-                  <label htmlFor="nameInput">Naam</label>
-                  <input id="nameInput" type="text"/>
-                  <label htmlFor="nameInput">E-mail adres</label>
-                  <input id="nameInput" type="email"/>
+                  <LabeledInput inputId="name" label="Name" placeholder="Mr Fantastic" />
+                  <LabeledInput inputId="email" label="E-mail adres" placeholder="fantastic@awesome.com" />
                   <input type="submit" value="Volgende"/>
               </form>
           </div>
         );
     }
 }
+
+export default GettingStartedPage;

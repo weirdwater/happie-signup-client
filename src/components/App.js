@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import GettingStartedPage from './presentational/GettingStartedPage'
 import styles from './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className={styles.app}>
-        <h1>hi</h1>
+        <GettingStartedPage/>
       </div>
     );
   }
