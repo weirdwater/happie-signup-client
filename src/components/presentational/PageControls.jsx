@@ -3,7 +3,7 @@ import styles from './PageControls.css'
 
 class PageControls extends React.Component {
     render() {
-        const {nextPage, previousPage, className, currentPage, totalPages, allowToContinue, ...props} = this.props;
+        const {nextPage, previousPage, className, currentPage, totalPages, allowToContinue} = this.props;
 
         const containerClass = [className, styles.container].join(' ');
 
