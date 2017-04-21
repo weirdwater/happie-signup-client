@@ -6,6 +6,8 @@ class PositionPage extends React.Component {
     constructor(props) {
         super(props)
 
+        this.handleFormSubmit = this.handleFormSubmit.bind(this)
+
         this.fields = [
             {
                 name: 'barShift',
@@ -41,9 +43,17 @@ class PositionPage extends React.Component {
         ]
     }
 
+    handleFormSubmit(formState) {
+        const position = {}
+        this.fields.forEach(field => {
+            position[field.name] = formState[field.name] || false
+        })
+        this.props.submitFormState({position})
+    }
+
     render() {
         return (
-            <FormPage {...this.props} fields={this.fields}>
+            <FormPage {...this.props}  fields={this.fields} submitFormState={this.handleFormSubmit}>
                 <h1>Posities</h1>
                 <ul>
                     <li><strong>Bediening shift 1</strong> 17:00 - 22:00</li>

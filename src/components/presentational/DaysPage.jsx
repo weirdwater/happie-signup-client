@@ -107,6 +107,11 @@ class DaysPage extends React.Component {
                 name: 'date-2017-06-03',
                 type: 'checkbox',
                 label: 'Zaterdag 3 juni 2017',
+            },
+            {
+                name: 'comment',
+                type: 'textarea',
+                label: 'Opmerkingen'
             }
         ]
     }
