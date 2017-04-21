@@ -6,6 +6,7 @@ import PersonalDetailsPage from "./presentational/PersonalDetailsPage";
 import styles from './App.css';
 import ExperienceDetailsPage from "./presentational/ExperienceDetailsPage";
 import LastPage from "./presentational/LastPage";
+import PositionPage from "./presentational/PositionPage";
 
 class App extends Component {
 
@@ -20,7 +21,8 @@ class App extends Component {
     this.endForm = this.endForm.bind(this);
 
     this.state = {
-      totalPages: 3,
+      totalPages: 4,
+      currentPage: 2,
       values: {
       }
     }
@@ -38,10 +40,10 @@ class App extends Component {
 
   newParticipant(name, email, wantsEmail) {
     const id = `${Date.now()}-${name}`;
-    this.ref = base.syncState(`${id}/signup`, {
-        context: this,
-        state: 'values'
-    });
+    // this.ref = base.syncState(`${id}/signup`, {
+    //     context: this,
+    //     state: 'values'
+    // });
     this.setState({
         participantId: id,
         currentPage: 0,
@@ -74,7 +76,7 @@ class App extends Component {
           base.removeBinding(this.ref);
       }
       this.setState({
-          totalPages: 3,
+          totalPages: 4,
           currentPage: 2,
           values: {}
       });
@@ -117,10 +119,19 @@ class App extends Component {
               totalPages={totalPages}
               formState={this.state.values}/>;
             break;
-        case 2:
+        case 3:
             page = <LastPage
                 endForm={this.endForm}
             />;
+            break;
+        case 2:
+            page = <PositionPage
+                submitFormState={this.submitFormState}
+                nextPage={this.nextPage}
+                previousPage={this.previousPage}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                formState={this.state.values}/>;
             break;
         default:
           page = <GettingStartedPage
