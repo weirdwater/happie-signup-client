@@ -127,4 +127,8 @@ class FormPage extends React.Component {
     }
 }
 
+FormPage.propTypes = {
+    fields: React.PropTypes.array
+}
+
 export default FormPage;
