@@ -21,6 +21,8 @@ class PersonalDetailsPage extends React.Component {
                 name: 'phonenumber',
                 type: 'text',
                 label: 'Telefoonnummer',
+                pattern: /^\d{10}$/,
+                placeholder: '06...',
                 required: true
             },
             {

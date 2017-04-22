@@ -62,6 +62,9 @@ class FormPage extends React.Component {
             return false
         }
         // Value doesn't match pattern
+        if (field.pattern) {
+            return value.match(field.pattern)
+        }
 
         return true;
     }
