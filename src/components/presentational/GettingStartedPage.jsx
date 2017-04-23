@@ -28,7 +28,7 @@ class GettingStartedPage extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         const {name, email, wantsEmail} = this.state;
-        this.props.newParticipant(name, email, wantsEmail);
+        this.props.newParticipant(name, email, wantsEmail, Date.now());
     }
 
     render() {

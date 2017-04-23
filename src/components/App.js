@@ -38,20 +38,21 @@ class App extends Component {
 
 
 
-  newParticipant(name, email, wantsEmail) {
+  newParticipant(name, email, wantsEmail, timestamp) {
     const id = `${Date.now()}-${name}`;
     this.ref = base.syncState(`${id}/signup`, {
         context: this,
         state: 'values'
     });
     this.setState({
-        participantId: id,
-        currentPage: 0,
-        values: {
-            email,
-            name,
-            wantsEmail
-        }
+      participantId: id,
+      currentPage: 0,
+      values: {
+        email,
+        name,
+        wantsEmail,
+        timestamp
+      }
     });
 
   }
