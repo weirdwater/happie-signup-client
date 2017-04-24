@@ -44,10 +44,13 @@ class PositionPage extends React.Component {
     }
 
     handleFormSubmit(formState) {
-        const position = {}
+        const position = []
         this.fields.forEach(field => {
-            position[field.name] = formState[field.name] || false
+            if (formState[field.name] || false) {
+                position.push(field.name)
+            }
         })
+
         this.props.submitFormState({position})
     }
 
