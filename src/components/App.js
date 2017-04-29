@@ -28,6 +28,19 @@ class App extends Component {
     }
   }
 
+  componentWillMount() {
+    if (window.localStorage.getItem('participantId') !== null) {
+      const id = window.localStorage.getItem('participantId')
+      this.ref = base.syncState(`${id}/signup`, {
+        context: this,
+        state: 'values',
+        then() {
+          this.setState({currentPage: 0})
+        }
+      });
+    }
+  }
+
   componentWillUnmount() {
       base.removeBinding(this.ref);
       window.localStorage.setItem('participantId', this.state.participantId);
@@ -40,6 +53,7 @@ class App extends Component {
 
   newParticipant(name, email, wantsEmail, timestamp) {
     const id = `${Date.now()}-${name}`;
+    window.localStorage.setItem('participantId', id)
     this.ref = base.syncState(`${id}/signup`, {
         context: this,
         state: 'values'
@@ -54,7 +68,6 @@ class App extends Component {
         timestamp
       }
     });
-
   }
 
   submitFormState(formState) {
@@ -76,6 +89,7 @@ class App extends Component {
       if (this.ref) {
           base.removeBinding(this.ref);
       }
+      window.localStorage.removeItem('participantId')
       this.setState({
           totalPages: 5,
           currentPage: 4,
