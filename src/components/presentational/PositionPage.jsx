@@ -55,6 +55,8 @@ class PositionPage extends React.Component {
     }
 
     render() {
+
+
         return (
             <FormPage {...this.props}  fields={this.fields} submitFormState={this.handleFormSubmit}>
                 <h1>Posities</h1>

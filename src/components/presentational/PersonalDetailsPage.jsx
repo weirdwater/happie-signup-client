@@ -28,7 +28,7 @@ class PersonalDetailsPage extends React.Component {
             {
                 name: 'wantsCalls',
                 type: 'checkbox',
-                label: 'Zet mij op de Bel-me-maar-lijst',
+                label: 'Zet mij op de Bel-me-maar-lijst'
             }
         ]
     }

@@ -23,6 +23,7 @@ class Form extends React.Component {
 
         const inputArgs = {
             onChange: this.handleInputChange,
+            checked: this.props.formState[props.name],
             value: this.props.formState[props.name],
             ...props
         };

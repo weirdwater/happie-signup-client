@@ -134,6 +134,8 @@ class DaysPage extends React.Component {
         return (
             <FormPage {...props} fields={this.fields} submitFormState={this.handleFormSubmit} >
                 <h1>Beschikbaarheid</h1>
+                <h2>Gekozen posities:</h2>
+
             </FormPage>
         )
     }
