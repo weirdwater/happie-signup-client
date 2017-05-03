@@ -11,7 +11,7 @@ class LastPage extends React.Component {
         return (
             <div className={styles.container}>
                 <h1>Bedankt voor je aanmelding!</h1>
-                <p>Binnenkort ontvang je een email om je beschikbaarheid in te vullen. Happietaria gaat van 8 mei tot 3 juni open.</p>
+                <p>Binnenkort ontvang je een email om je beschikbaarheid te bevestigen. Happietaria gaat van 8 mei tot 3 juni open.</p>
             </div>
         );
     }

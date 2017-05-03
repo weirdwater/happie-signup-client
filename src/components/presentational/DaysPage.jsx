@@ -134,8 +134,15 @@ class DaysPage extends React.Component {
         return (
             <FormPage {...props} fields={this.fields} submitFormState={this.handleFormSubmit} >
                 <h1>Beschikbaarheid</h1>
-                <h2>Gekozen posities:</h2>
-
+                <h2>Tijden</h2>
+                <ul>
+                    <li><strong>Bediening shift 1</strong> 17:30 - 22:00</li>
+                    <li><strong>Bediening shift 2</strong> 18:30 - sluit</li>
+                    <li><strong>Bar</strong> 17:00 - sluit</li>
+                    <li><strong>Keuken shift 1</strong> 15:30 - 20:00</li>
+                    <li><strong>Keuken shift 2</strong> 19:45 - sluit</li>
+                    <li><strong>Spoelkeuken</strong> 18:30 - sluit</li>
+                </ul>
             </FormPage>
         )
     }

@@ -1,0 +1,36 @@
+[
+  {
+    "title": "Aanmelden als vrijwilliger",
+    "type": ""
+  },
+  {
+    "title": "Tof dat je wilt helpen!",
+    "type": "",
+    "fields": [
+      {
+        "name": "surnamePrefix",
+        "type": "text",
+        "label": "Tussenvoegsel",
+      },
+      {
+        "name": "surname",
+        "type": "text",
+        "label": "Achternaam",
+        "required": true
+      },
+      {
+        "name": "phonenumber",
+        "type": "text",
+        "label": "Telefoonnummer",
+        "pattern": "/^\d{10}$/",
+        "placeholder": "06...",
+        "required": true
+      },
+      {
+        "name": "wantsCalls",
+        "type": "checkbox",
+        "label": "Zet mij op de Bel-me-maar-lijst"
+      }
+    ]
+  }
+]
