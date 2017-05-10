@@ -141,7 +141,7 @@ class DaysPage extends React.Component {
                     <li><strong>Bar</strong> 17:30 - sluit</li>
                     <li><strong>Keuken shift 1</strong> 15:30 - 20:00</li>
                     <li><strong>Keuken shift 2</strong> 19:45 - sluit</li>
-                    <li><strong>Spoelkeuken</strong> 18:30 - sluit</li>
+                    <li><strong>Spoelkeuken</strong> 18:00 - sluit</li>
                 </ul>
             </FormPage>
         )
